@@ -112,6 +112,10 @@
 /obj/item/projectile/bullet/midbullet3
 	damage = 30
 
+/obj/item/projectile/bullet/rubbullet
+	damage = 5
+	stamina = 45
+
 /obj/item/projectile/bullet/midbullet3/hp
 	damage = 40
 	armour_penetration = -50

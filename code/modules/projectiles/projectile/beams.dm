@@ -21,6 +21,10 @@
 	damage = 0
 	nodamage = 1
 
+ /obj/item/projectile/beam/small
+	name = "small laser"
+	damage = 20
+
 /obj/item/projectile/beam/scatter
 	name = "laser pellet"
 	icon_state = "scatterlaser"

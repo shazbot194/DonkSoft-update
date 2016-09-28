@@ -47,3 +47,10 @@
 	select_name = "spraydown"
 	fire_sound = 'sound/weapons/gunshot_smg.ogg'
 	e_cost = 200
+
+/obj/item/ammo_casing/energy/rubberdbullet
+	projectile_type = /obj/item/projectile/bullet/rubbullet
+	select_name = "spraydown"
+	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	e_cost = 200
+

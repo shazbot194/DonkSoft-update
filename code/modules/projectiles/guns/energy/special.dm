@@ -363,6 +363,15 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/c3dbullet)
 	can_charge = 0
 
+/obj/item/weapon/gun/energy/rubber
+	name = "cyborg rubber gun"
+	desc = "A machinegun that fires rubber bullets ment to incapasitate suspects who cannot be handled by normal disablers."
+	icon_state = "l6closed0"
+	icon = 'icons/obj/guns/projectile.dmi'
+	cell_type = /obj/item/weapon/stock_parts/cell/secborg
+	ammo_type = list(/obj/item/ammo_casing/energy/rubberdbullet)
+	can_charge = 0
+
 /obj/item/weapon/gun/energy/printer/update_icon()
 	return
 

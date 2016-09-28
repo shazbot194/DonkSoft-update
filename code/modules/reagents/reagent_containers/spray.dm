@@ -111,6 +111,15 @@
 	volume = 50
 	list_reagents = list("cleaner" = 50)
 
+//metal foam
+/obj/item/weapon/reagent_containers/spray/metalfoam
+	name = "Metal foam sprayer"
+	desc = "For quick fix hull breaches"
+	list_reagents = list("sacid" = 10, "fluorosurfactant" = 10, "aluminum" = 30)
+	flags = NOREACT
+	spray_maxrange = 1
+	amount_per_transfer_from_this = 20
+
 //pepperspray
 /obj/item/weapon/reagent_containers/spray/pepper
 	name = "pepperspray"

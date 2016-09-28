@@ -47,6 +47,12 @@
 	desc = "An energy-based laser gun that draws power from the cyborg's internal energy cell directly. So this is what freedom looks like?"
 	origin_tech = null
 
+/obj/item/weapon/gun/energy/laser/lessercyborg
+	can_charge = 0
+	desc = "An energy-based laser gun that draws power from the cyborg's internal energy cell directly. This is a smaller laser then normal meant for pest conrtoll"
+	origin_tech = null
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/small)
+
 /obj/item/weapon/gun/energy/laser/cyborg/newshot()
 	..()
 	robocharge()

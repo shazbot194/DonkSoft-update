@@ -265,7 +265,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/proc/pick_module()
 	if(module)
 		return
-	var/list/modules = list("Standard", "Engineering", "Medical", "Miner", "Janitor", "Service", "Security")
+	var/list/modules = list("Standard", "Engineering", "Medical", "Miner", "Janitor", "Service", "Security", "Emergency", "Pest")
 	if(security_level == (SEC_LEVEL_GAMMA || SEC_LEVEL_EPSILON) || crisis)
 		to_chat(src, "\red Crisis mode active. Combat module available.")
 		modules+="Combat"
@@ -370,6 +370,17 @@ var/list/robot_verbs_default = list(
 			modtype = "Xeno-Hu"
 			feedback_inc("xeborg_hunter",1)
 
+		if("Emergency")
+			module = new /obj/item/weapon/robot_module/emergency(src)
+			module.channels = list("Emergency" = 1)
+			modtype = "eyebot"
+			icon_state = "Eyebot-emergency"
+
+		if("Pest")
+			module = new /obj/item/weapon/robot_module/pest(src)
+			module.channels = list("Pest" = 1)
+			modtype = "eyebot"
+			icon_state = "Eyebot-sec1"
 
 	//languages
 	module.add_languages(src)
@@ -1000,8 +1011,14 @@ var/list/robot_verbs_default = list(
 			overlays += "[src.ckey]-openpanel +c"
 		else
 			overlays += "[src.ckey]-openpanel -c"
-
-	if(opened)
+	else if(opened && modtype == "eyebot")
+		if(wiresexposed)
+			overlays += "Eyebot-openpanel +w"
+		else if(cell)
+			overlays += "Eyebot-openpanel +c"
+		else
+			overlays += "Eyebot-openpanel -c"
+	else if(opened)
 		if(wiresexposed)
 			overlays += "ov-openpanel +w"
 		else if(cell)

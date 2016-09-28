@@ -217,6 +217,7 @@
 	modules += new /obj/item/clothing/mask/gas/sechailer/cyborg(src)
 	emag = new /obj/item/weapon/gun/energy/laser/cyborg(src)
 
+
 	fix_modules()
 
 /obj/item/weapon/robot_module/janitor
@@ -414,6 +415,57 @@
 	emag = new /obj/item/weapon/gun/energy/lasercannon/cyborg(src)
 
 	fix_modules()
+
+
+/obj/item/weapon/robot_module/emergency
+	name = "emergency robot module"
+	module_type = "emergency"
+	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
+
+/obj/item/weapon/robot_module/emergency/New()
+	..()
+	modules += new /obj/item/device/healthanalyzer/advanced(src)
+	modules += new /obj/item/weapon/reagent_containers/borghypo(src)
+	modules += new /obj/item/weapon/extinguisher/mini(src)
+	modules += new /obj/item/weapon/weldingtool/mini(src)
+	modules += new /obj/item/weapon/reagent_containers/spray/metalfoam(src)
+	modules += new /obj/item/weapon/crowbar(src)
+
+
+	fix_modules()
+
+/obj/item/weapon/robot_module/emergency/respawn_consumable(mob/living/silicon/robot/R)
+	var/obj/item/weapon/reagent_containers/spray/metalfoam/C = locate() in modules
+	C.reagents.add_reagent("sacid", 1)
+	C.reagents.add_reagent("fluorosurfactant", 1)
+	C.reagents.add_reagent("aluminum", 3)
+	..()
+
+/obj/item/weapon/robot_module/emergency/add_subsystems(mob/living/silicon/robot/R)
+	R.ionpulse = 1
+	..()
+
+/obj/item/weapon/robot_module/pest
+	name = "pest controll robot module"
+	module_type = "pest"
+
+/obj/item/weapon/robot_module/pest/New()
+	..()
+	modules += new /obj/item/weapon/gun/energy/rubber(src)
+	modules += new /obj/item/weapon/gun/energy/laser/lessercyborg(src)
+	modules += new /obj/item/weapon/gun/energy/disabler/cyborg(src)
+	modules += new /obj/item/weapon/restraints/handcuffs/cable/zipties/cyborg(src)
+	modules += new /obj/item/weapon/extinguisher/mini(src)
+	modules += new /obj/item/weapon/weldingtool/mini(src)
+	modules += new /obj/item/weapon/crowbar(src)
+
+	fix_modules()
+
+
+/obj/item/weapon/robot_module/pest/add_subsystems(mob/living/silicon/robot/R)
+	R.ionpulse = 1
+	..()
+
 
 /obj/item/weapon/robot_module/alien/hunter
 	name = "alien hunter module"
