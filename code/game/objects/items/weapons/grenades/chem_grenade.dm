@@ -413,6 +413,12 @@
 		beakers += B2
 		update_icon()
 
+/obj/item/weapon/grenade/chem_grenade/metalfoam/no
+
+/obj/item/weapon/grenade/chem_grenade/metalfoam/no/action(target, params)
+	spawn(det_time)
+		prime()
+	return
 
 /obj/item/weapon/grenade/chem_grenade/incendiary
 	payload_name = "incendiary"

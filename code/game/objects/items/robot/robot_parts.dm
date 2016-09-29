@@ -382,6 +382,7 @@
 		qdel(W)
 		qdel(src)
 		return
+
 	return
 
 /obj/item/robot_parts/attackby(obj/item/W as obj, mob/user as mob, params)
@@ -393,3 +394,184 @@
 			sabotaged = 1
 		return
 	..()
+
+/obj/item/robot_parts/eyebot
+	name = "eyebot_frame"
+	desc = "An eyebot frame."
+	icon_state = "eyebot"
+
+	var/created_name = ""
+	var/mob/living/silicon/ai/forced_ai
+	var/locomotion = 1
+	var/lawsync = 1
+	var/aisync = 1
+	var/panel_locked = 1
+
+	var/obj/item/weapon/stock_parts/cell/cell = null
+	var/obj/item/device/flash/flash = null
+	var/obj/item/stack/cable_coil/cable = null
+	var/obj/item/stack/rods/rods = null
+
+/obj/item/robot_parts/robot_suit/New()
+	..()
+	src.updateicon()
+
+/obj/item/robot_parts/eyebot/proc/updateicon()
+	src.overlays.Cut()
+	if(rods)
+		src.overlays += "rods"
+
+/obj/item/robot_parts/eyebot/proc/check_completion()
+	if(src.cable && src.cell)
+		if(src.flash && src.rods)
+			feedback_inc("cyborg_frames_built",1)
+			return 1
+	return 0
+
+/obj/item/robot_parts/eyebot/attackby(obj/item/W as obj, mob/user as mob, params)
+	..()
+	if(istype(W, /obj/item/device/flash))
+		if(flash)
+			to_chat(user, "\blue You have already inserted the optics!")
+			return
+		else
+			user.drop_item()
+			W.loc = src
+			src.flash = W
+			to_chat(user, "\blue You insert the flash into the eye socket!")
+
+	if(istype(W, /obj/item/weapon/stock_parts/cell))
+		if(cell)
+			to_chat(user, "\blue You have already inserted a cell!")
+			return
+		else
+			user.drop_item()
+			W.loc = src
+			src.cell = W
+			to_chat(user, "\blue You insert the cell!")
+	if(istype(W, /obj/item/stack/cable_coil))
+		if(src.cable)
+			to_chat(user, "\blue You have already inserted wire!")
+			return
+		else
+			var/obj/item/stack/cable_coil/coil = W
+			coil.use(1)
+			src.cable = 1.0
+			to_chat(user, "\blue You insert the wire!")
+
+	if(istype(W, /obj/item/stack/rods))
+		var/obj/item/stack/rods/rods = W
+		if(src.rods)
+			to_chat(user, "\blue The eyebot already has rods installed.")
+			return 0
+		else if(rods.amount < 6)
+			to_chat(user, ("There's not enough rods."))
+			return 0
+		else
+			rods.use(6)
+		to_chat(user, "\blue You add the rods to the eyebot.")
+		src.rods = 1.0
+		src.updateicon()
+		return
+
+
+	if(istype(W, /obj/item/device/mmi))
+		var/obj/item/device/mmi/M = W
+		if(check_completion())
+			if(!istype(loc,/turf))
+				to_chat(user, "\red You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise.")
+				return
+			if(!M.brainmob)
+				to_chat(user, "\red Sticking an empty [W] into the frame would sort of defeat the purpose.")
+				return
+
+			if(!M.brainmob.key)
+				var/ghost_can_reenter = 0
+				if(M.brainmob.mind)
+					for(var/mob/dead/observer/G in player_list)
+						if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
+							ghost_can_reenter = 1
+							break
+					for(var/mob/living/simple_animal/S in player_list)
+						if(S in respawnable_list)
+							ghost_can_reenter = 1
+							break
+				if(!ghost_can_reenter)
+					to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
+					return
+
+			if(M.brainmob.stat == DEAD)
+				to_chat(user, "\red Sticking a dead [W] into the frame would sort of defeat the purpose.")
+				return
+
+			if(M.brainmob.mind in ticker.mode.head_revolutionaries)
+				to_chat(user, "\red The frame's firmware lets out a shrill sound, and flashes 'Abnormal Memory Engram'. It refuses to accept the [W].")
+				return
+
+			if(jobban_isbanned(M.brainmob, "Cyborg") || jobban_isbanned(M.brainmob,"nonhumandept"))
+				to_chat(user, "\red This [W] does not seem to fit.")
+				return
+
+			var/mob/living/silicon/robot/eyebot/O = new /mob/living/silicon/robot/eyebot(get_turf(loc), unfinished = 1)
+			if(!O)	return
+
+			user.drop_item()
+
+			var/datum/job_objective/make_cyborg/task = user.mind.findJobTask(/datum/job_objective/make_cyborg)
+			if(istype(task))
+				task.unit_completed()
+
+			if(M.syndiemmi)
+				aisync = 0
+				lawsync = 0
+				O.laws = new /datum/ai_laws/syndicate_override
+
+			O.invisibility = 0
+			//Transfer debug settings to new mob
+			O.custom_name = created_name
+			O.rename_character(O.real_name, O.get_default_name())
+			O.locked = panel_locked
+			if(!aisync)
+				lawsync = 0
+				O.connected_ai = null
+			else
+				O.notify_ai(1)
+				if(forced_ai)
+					O.connected_ai = forced_ai
+			if(!lawsync && !M.syndiemmi)
+				O.lawupdate = 0
+				O.make_laws()
+
+			M.brainmob.mind.transfer_to(O)
+
+			if(O.mind && O.mind.special_role)
+				O.mind.store_memory("As a cyborg, you must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead.")
+				to_chat(O, "<span class='userdanger'>You have been robotized!</span>")
+				to_chat(O, "<span class='danger'>You must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead.</span>")
+
+			O.job = "Cyborg"
+
+			O.cell = cell
+			cell.loc = O
+			cell = null
+			W.loc = O//Should fix cybros run time erroring when blown up. It got deleted before, along with the frame.
+			// Since we "magically" installed a cell, we also have to update the correct component.
+			if(O.cell)
+				var/datum/robot_component/cell_component = O.components["power cell"]
+				cell_component.wrapped = O.cell
+				cell_component.installed = 1
+			O.mmi = W
+			O.Namepick()
+
+			feedback_inc("cyborg_birth",1)
+			callHook("borgify", list(O))
+
+			src.loc = O
+
+			if(!locomotion)
+				O.lockcharge = 1
+				O.update_canmove()
+				to_chat(O, "<span class='warning'>Error: Servo motors unresponsive.</span>")
+
+		else
+			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")

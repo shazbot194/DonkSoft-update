@@ -1069,6 +1069,15 @@
 	category = list("Cyborg Upgrade Modules")
 
 //Misc
+/datum/design/borg_head
+	name = "Eyebot Frame"
+	id = "eyebot"
+	build_type = MECHFAB
+	build_path = /obj/item/robot_parts/eyebot
+	materials = list(MAT_METAL=25000)
+	construction_time = 600
+	category = list("Misc")
+
 /datum/design/mecha_tracking
 	name = "Exosuit Tracking Beacon"
 	id = "mecha_tracking"

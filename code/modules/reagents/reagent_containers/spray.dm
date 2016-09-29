@@ -115,10 +115,24 @@
 /obj/item/weapon/reagent_containers/spray/metalfoam
 	name = "Metal foam sprayer"
 	desc = "For quick fix hull breaches"
-	list_reagents = list("sacid" = 10, "fluorosurfactant" = 10, "aluminum" = 30)
-	flags = NOREACT
-	spray_maxrange = 1
-	amount_per_transfer_from_this = 20
+	icon = 'icons/mob/alien.dmi'
+	icon_state = "borg-spray-smoke"
+
+/obj/item/weapon/reagent_containers/spray/metalfoam/afterattack(atom/A as mob|obj, mob/user as mob)
+	if(istype(A, /obj/structure/reagent_dispensers) && get_dist(src,A) <= 1)
+		if(!A.reagents.total_volume && A.reagents)
+			to_chat(user, "<span class='notice'>\The [A] is empty.</span>")
+			return
+
+		if(reagents.total_volume >= reagents.maximum_volume)
+			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			return
+	reagents.remove_reagent(25,"water")
+	var/datum/effect/system/bad_smoke_spread/smoke = new /datum/effect/system/bad_smoke_spread()
+	smoke.set_up(5, 0, user.loc)
+	smoke.start()
+	playsound(user.loc, 'sound/effects/bamf.ogg', 50, 2)
+
 
 //pepperspray
 /obj/item/weapon/reagent_containers/spray/pepper

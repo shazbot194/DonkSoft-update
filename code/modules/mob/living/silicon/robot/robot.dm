@@ -10,6 +10,7 @@ var/list/robot_verbs_default = list(
 	maxHealth = 100
 	health = 100
 	universal_understand = 1
+	var/eyebot = 0
 
 	var/sight_mode = 0
 	var/custom_name = ""
@@ -265,7 +266,7 @@ var/list/robot_verbs_default = list(
 /mob/living/silicon/robot/proc/pick_module()
 	if(module)
 		return
-	var/list/modules = list("Standard", "Engineering", "Medical", "Miner", "Janitor", "Service", "Security", "Emergency", "Pest")
+	var/list/modules = list("Standard", "Engineering", "Medical", "Miner", "Janitor", "Service", "Security")
 	if(security_level == (SEC_LEVEL_GAMMA || SEC_LEVEL_EPSILON) || crisis)
 		to_chat(src, "\red Crisis mode active. Combat module available.")
 		modules+="Combat"
@@ -275,6 +276,8 @@ var/list/robot_verbs_default = list(
 			modules = list("Peacekeeper")
 	if(mmi != null && mmi.alien)
 		modules = "Hunter"
+	if(eyebot == 1)
+		modules = list("Emergency", "Pest")
 	modtype = input("Please, select a module!", "Robot", null, null) as null|anything in modules
 	if(!modtype)
 		return
@@ -1490,3 +1493,13 @@ var/list/robot_verbs_default = list(
 			disable_component("comms", 160)
 		if(2)
 			disable_component("comms", 60)
+
+
+/mob/living/silicon/robot/eyebot
+	name = "Eyebot"
+	real_name = "Eyebot"
+	icon = 'icons/mob/robots.dmi'
+	icon_state = "Eyebot"
+	maxHealth = 75
+	health = 75
+	eyebot = 1

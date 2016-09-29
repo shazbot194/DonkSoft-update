@@ -64,3 +64,21 @@
 	icon_state = "foamdart_riot"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	stamina = 25
+
+//kinda cheating but lets see how it goes
+/obj/item/projectile/bullet/reusable/metalfoam
+	name = "metal foam grenade"
+	desc = "BREACH."
+	damage = 0
+	damage_type = OXY
+	nodamage = 1
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "chemg"
+	ammo_type = /obj/item/weapon/grenade/chem_grenade/metalfoam/no
+	range = 10
+	edge = 0
+	embed = 0
+
+/obj/item/projectile/bullet/reusable/foam_dart/handle_drop()
+	if(dropped)
+		return
