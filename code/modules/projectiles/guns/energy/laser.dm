@@ -59,6 +59,12 @@
 	icon_state = "riotgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/foam)
 
+/obj/item/weapon/gun/energy/laser/cyborg/tear
+	name = "Tear Gas launcher"
+	desc = "A grenade launcher shoots tear gas grenades."
+	icon = 'icons/obj/guns/projectile.dmi'
+	icon_state = "riotgun"
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/tear)
 
 /obj/item/weapon/gun/energy/laser/cyborg/newshot()
 	..()

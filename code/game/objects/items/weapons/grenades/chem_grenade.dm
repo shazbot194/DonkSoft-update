@@ -414,11 +414,8 @@
 		update_icon()
 
 /obj/item/weapon/grenade/chem_grenade/metalfoam/no
+	det_time = 1
 
-/obj/item/weapon/grenade/chem_grenade/metalfoam/no/action(target, params)
-	spawn(det_time)
-		prime()
-	return
 
 /obj/item/weapon/grenade/chem_grenade/incendiary
 	payload_name = "incendiary"

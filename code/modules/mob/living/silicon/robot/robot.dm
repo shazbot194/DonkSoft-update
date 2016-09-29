@@ -10,7 +10,7 @@ var/list/robot_verbs_default = list(
 	maxHealth = 100
 	health = 100
 	universal_understand = 1
-	var/eyebot = 0
+	var/borgtype = 0
 
 	var/sight_mode = 0
 	var/custom_name = ""
@@ -276,8 +276,10 @@ var/list/robot_verbs_default = list(
 			modules = list("Peacekeeper")
 	if(mmi != null && mmi.alien)
 		modules = "Hunter"
-	if(eyebot == 1)
+	if(borgtype == 1)
 		modules = list("Emergency", "Pest")
+		if(borgtype == 1)
+		modules = list("Guard")
 	modtype = input("Please, select a module!", "Robot", null, null) as null|anything in modules
 	if(!modtype)
 		return
@@ -384,6 +386,12 @@ var/list/robot_verbs_default = list(
 			module.channels = list("Pest" = 1)
 			modtype = "eyebot"
 			icon_state = "Eyebot-sec1"
+
+		if("Guard")
+			module = new /obj/item/weapon/robot_module/guard(src)
+			module.channels = list("Guard" = 1)
+			modtype = "large"
+			icon_state = "proto"
 
 	//languages
 	module.add_languages(src)
@@ -1502,4 +1510,13 @@ var/list/robot_verbs_default = list(
 	icon_state = "Eyebot"
 	maxHealth = 75
 	health = 75
-	eyebot = 1
+	borgtype = 1
+
+/mob/living/silicon/robot/Large
+	name = "Large Borg"
+	real_name = "Large Borg"
+	icon = 'icons/mob/robots.dmi'
+	icon_state = "proto"
+	maxHealth = 250
+	health = 250
+	borgtype = 2

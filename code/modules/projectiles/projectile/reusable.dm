@@ -65,6 +65,10 @@
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	stamina = 25
 
+/obj/item/projectile/bullet/reusable/foam_dart/handle_drop()
+	if(dropped)
+		return
+
 //kinda cheating but lets see how it goes
 /obj/item/projectile/bullet/reusable/metalfoam
 	name = "metal foam grenade"
@@ -78,7 +82,34 @@
 	range = 10
 	edge = 0
 	embed = 0
+	var/det_time = 1
 
-/obj/item/projectile/bullet/reusable/foam_dart/handle_drop()
-	if(dropped)
-		return
+
+/obj/item/projectile/bullet/reusable/metalfoam/handle_drop()
+	if(!dropped)
+		var/obj/item/weapon/grenade/chem_grenade/metalfoam/no/F = new ammo_type(loc)
+		dropped = 1
+		spawn(det_time)
+			F.prime()
+
+/obj/item/projectile/bullet/reusable/tear
+	name = "tear gas grenade"
+	desc = "GET DOWN."
+	damage = 0
+	damage_type = OXY
+	nodamage = 1
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "chemg"
+	ammo_type = /obj/item/weapon/grenade/chem_grenade/teargas
+	range = 10
+	edge = 0
+	embed = 0
+	var/det_time = 1
+
+
+/obj/item/projectile/bullet/reusable/tear/handle_drop()
+	if(!dropped)
+		var/obj/item/weapon/grenade/chem_grenade/teargas/F = new ammo_type(loc)
+		dropped = 1
+		spawn(det_time)
+			F.prime()
