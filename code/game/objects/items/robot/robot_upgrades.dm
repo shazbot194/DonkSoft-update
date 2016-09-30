@@ -110,6 +110,10 @@
 		to_chat(R, "<span class='notice'>A VTEC unit is already installed!</span>")
 		to_chat(usr, "<span class='notice'>There's no room for another VTEC unit!</span>")
 		return
+	if(R.speed == 3)
+		to_chat(R, "<span class='notice'>A VTEC unit is already installed!</span>")
+		to_chat(usr, "<span class='notice'>There's no room for another VTEC unit!</span>")
+		return
 
 	R.speed = -1 // Gotta go fast.
 

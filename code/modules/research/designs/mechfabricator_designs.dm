@@ -1069,7 +1069,7 @@
 	category = list("Cyborg Upgrade Modules")
 
 //Misc
-/datum/design/borg_head
+/datum/design/Eyebot_frame
 	name = "Eyebot Frame"
 	id = "eyebot"
 	build_type = MECHFAB

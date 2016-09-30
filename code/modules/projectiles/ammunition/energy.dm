@@ -27,10 +27,15 @@
 
 /obj/item/ammo_casing/energy/laser/foam
 	projectile_type = /obj/item/projectile/bullet/reusable/metalfoam
-	e_cost = 10000
+	e_cost = 20000
+
+/obj/item/ammo_casing/energy/laser/ldisabler
+	projectile_type = /obj/item/projectile/beam/ldisabler
+	e_cost = 5000
 
 /obj/item/ammo_casing/energy/laser/tear
 	projectile_type = /obj/item/projectile/bullet/reusable/tear
+	e_cost = 20000
 
 /obj/item/ammo_casing/energy/laser/scatter
 	projectile_type = /obj/item/projectile/beam/scatter

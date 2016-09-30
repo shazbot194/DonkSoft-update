@@ -409,10 +409,3 @@ obj/item/projectile/kinetic/New()
 	var/mob/living/simple_animal/hostile/mimic/copy/ranged/R = new /mob/living/simple_animal/hostile/mimic/copy/ranged(T, G, firer)
 	if(ismob(target))
 		R.target = target
-
-/obj/item/projectile/metalfoam
-	name = "grenade"
-	hitsound = 'sound/weapons/genhit1.ogg'
-	damage = 0
-	nodamage = 1
-	damage_type = BURN

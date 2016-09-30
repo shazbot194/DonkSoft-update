@@ -47,6 +47,15 @@
 	hitsound = 'sound/weapons/tap.ogg'
 	eyeblur = 0
 
+/obj/item/projectile/beam/ldisabler
+	name = "large disabler beam"
+	icon_state = "Lomnilaser"
+	damage = 72
+	damage_type = STAMINA
+	flag = "energy"
+	hitsound = 'sound/weapons/tap.ogg'
+	eyeblur = 0
+
 /obj/item/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"

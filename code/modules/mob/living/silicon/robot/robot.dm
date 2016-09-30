@@ -278,7 +278,7 @@ var/list/robot_verbs_default = list(
 		modules = "Hunter"
 	if(borgtype == 1)
 		modules = list("Emergency", "Pest")
-		if(borgtype == 1)
+	if(borgtype == 2)
 		modules = list("Guard")
 	modtype = input("Please, select a module!", "Robot", null, null) as null|anything in modules
 	if(!modtype)
@@ -379,19 +379,24 @@ var/list/robot_verbs_default = list(
 			module = new /obj/item/weapon/robot_module/emergency(src)
 			module.channels = list("Emergency" = 1)
 			modtype = "eyebot"
-			icon_state = "Eyebot-emergency"
+			module_sprites["Medbay Green"] = "Eyebot-emergency"
+			module_sprites["Classic red"] = "Eyebot-emergency1"
 
 		if("Pest")
 			module = new /obj/item/weapon/robot_module/pest(src)
 			module.channels = list("Pest" = 1)
 			modtype = "eyebot"
-			icon_state = "Eyebot-sec1"
+			module_sprites["Badge"] = "Eyebot-sec1"
+			module_sprites["clean"] = "Eyebot-sec2"
 
 		if("Guard")
 			module = new /obj/item/weapon/robot_module/guard(src)
 			module.channels = list("Guard" = 1)
 			modtype = "large"
-			icon_state = "proto"
+			module_sprites["Brig Red"] = "guardred"
+			module_sprites["Bridge Blue"] = "guardblue"
+			module_sprites["NT Blue"] = "guardnt"
+			module_sprites["Grey Tide"] = "guardgrey"
 
 	//languages
 	module.add_languages(src)
@@ -1513,10 +1518,10 @@ var/list/robot_verbs_default = list(
 	borgtype = 1
 
 /mob/living/silicon/robot/Large
-	name = "Large Borg"
-	real_name = "Large Borg"
+	name = "Guard Borg"
+	real_name = "Guard Borg"
 	icon = 'icons/mob/robots.dmi'
-	icon_state = "proto"
+	icon_state = "guardgrey"
 	maxHealth = 250
 	health = 250
 	borgtype = 2

@@ -77,7 +77,7 @@
 	damage_type = OXY
 	nodamage = 1
 	icon = 'icons/obj/grenade.dmi'
-	icon_state = "chemg"
+	icon_state = "chemg_primed"
 	ammo_type = /obj/item/weapon/grenade/chem_grenade/metalfoam/no
 	range = 10
 	edge = 0
@@ -99,7 +99,7 @@
 	damage_type = OXY
 	nodamage = 1
 	icon = 'icons/obj/grenade.dmi'
-	icon_state = "chemg"
+	icon_state = "chemg_primed"
 	ammo_type = /obj/item/weapon/grenade/chem_grenade/teargas
 	range = 10
 	edge = 0

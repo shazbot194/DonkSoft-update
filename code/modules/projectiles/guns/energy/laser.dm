@@ -66,6 +66,13 @@
 	icon_state = "riotgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/tear)
 
+/obj/item/weapon/gun/energy/laser/cyborg/disablercannon
+	name = "Disabler cannon"
+	desc = "A massive disabler cannon"
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/ldisabler)
+	icon_state = "disablercannon"
+	ammo_x_offset = 3
+
 /obj/item/weapon/gun/energy/laser/cyborg/newshot()
 	..()
 	robocharge()

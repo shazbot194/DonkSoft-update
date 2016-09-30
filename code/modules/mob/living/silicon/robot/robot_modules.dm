@@ -449,7 +449,6 @@
 
 /obj/item/weapon/robot_module/pest/New()
 	..()
-	modules += new /obj/item/weapon/gun/energy/rubber(src)
 	modules += new /obj/item/weapon/gun/energy/laser/cyborg/lesser(src)
 	modules += new /obj/item/weapon/gun/energy/disabler/cyborg(src)
 	modules += new /obj/item/weapon/restraints/handcuffs/cable/zipties/cyborg(src)
@@ -471,7 +470,7 @@
 /obj/item/weapon/robot_module/guard/New()
 	..()
 	modules += new /obj/item/weapon/gun/energy/rubber(src)
-	modules += new /obj/item/weapon/gun/energy/disabler/cyborg(src)
+	modules += new /obj/item/weapon/gun/energy/laser/cyborg/disablercannon(src)
 	modules += new /obj/item/weapon/restraints/handcuffs/cable/zipties/cyborg(src)
 	modules += new /obj/item/weapon/gun/energy/laser/cyborg/tear(src)
 	modules += new /obj/item/taperoll/police(src)
@@ -481,7 +480,7 @@
 
 
 /obj/item/weapon/robot_module/guard/add_subsystems(mob/living/silicon/robot/R)
-	R.speed = 1
+	R.speed = 3
 	..()
 
 
