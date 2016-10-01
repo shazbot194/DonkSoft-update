@@ -660,7 +660,7 @@
 		else
 			metal.use(6)
 			to_chat(user, "\blue You add the plasteel armor to the bot.")
-			src.rods = 1.0
+			src.metal = 1.0
 			src.updateicon()
 			return
 
