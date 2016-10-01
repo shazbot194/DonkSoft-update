@@ -113,3 +113,25 @@
 		dropped = 1
 		spawn(det_time)
 			F.prime()
+
+/obj/item/projectile/bullet/reusable/smoke
+	name = "smoke grenade"
+	desc = "GET DOWN."
+	damage = 0
+	damage_type = OXY
+	nodamage = 1
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "flashbang_active"
+	ammo_type = /obj/item/weapon/grenade/smokebomb
+	range = 10
+	edge = 0
+	embed = 0
+	var/det_time = 10
+
+
+/obj/item/projectile/bullet/reusable/smoke/handle_drop()
+	if(!dropped)
+		var/obj/item/weapon/grenade/smokebomb/F = new ammo_type(loc)
+		dropped = 1
+		spawn(det_time)
+			F.prime()

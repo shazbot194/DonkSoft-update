@@ -173,3 +173,7 @@
 
 /obj/item/weapon/stock_parts/cell/emproof/corrupt()
 	return
+
+/obj/item/weapon/stock_parts/cell/borgnade //1 shots
+	name = "pulse rifle power cell"
+	maxcharge = 40000

@@ -463,6 +463,24 @@
 	R.ionpulse = 1
 	..()
 
+/obj/item/weapon/robot_module/eyesyndi
+	name = "syndicate space assault robot module"
+	module_type = "Malf" // cuz it looks cool
+
+/obj/item/weapon/robot_module/eyesyndi/New()
+	..()
+	modules += new /obj/item/weapon/gun/energy/printer/ap(src)
+	modules += new /obj/item/weapon/gun/energy/laser/cyborg(src)
+	modules += new /obj/item/weapon/gun/energy/laser/cyborg/smoke(src)
+	modules += new /obj/item/weapon/pinpointer/operative(src)
+	emag = null
+
+	fix_modules()
+
+/obj/item/weapon/robot_module/eyesyndi/add_subsystems(mob/living/silicon/robot/R)
+	R.ionpulse = 1
+	..()
+
 /obj/item/weapon/robot_module/guard
 	name = "Guard module"
 	module_type = "Guard"

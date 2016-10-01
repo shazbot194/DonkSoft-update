@@ -124,6 +124,10 @@
 	damage = 27
 	armour_penetration = 40
 
+/obj/item/projectile/bullet/eyebotsydi
+	damage = 20
+	armour_penetration = 40
+
 /obj/item/projectile/bullet/midbullet3/fire/on_hit(atom/target, blocked = 0)
 	if(..(target, blocked))
 		var/mob/living/M = target

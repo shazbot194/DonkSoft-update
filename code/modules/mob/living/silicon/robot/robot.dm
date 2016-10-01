@@ -389,6 +389,13 @@ var/list/robot_verbs_default = list(
 			module_sprites["Badge"] = "Eyebot-sec1"
 			module_sprites["clean"] = "Eyebot-sec2"
 
+
+		if("eyesyndi")
+			module = new /obj/item/weapon/robot_module/eyesyndi(src)
+			module.channels = list("eyesyndi" = 1)
+			modtype = "eyebot"
+			icon_state = "Eyebot-syndi"
+
 		if("Guard")
 			module = new /obj/item/weapon/robot_module/guard(src)
 			module.channels = list("Guard" = 1)
@@ -1525,3 +1532,23 @@ var/list/robot_verbs_default = list(
 	maxHealth = 250
 	health = 250
 	borgtype = 2
+
+/mob/living/silicon/robot/syndicate/eyesyndi
+	base_icon = "Eyebot-syndi"
+	icon_state = "Eyebot-syndi"
+	modtype = "eyesyndi"
+	designation = "Syndicate Eyebot"
+	maxHealth = 75
+	health = 75
+	borgtype = 1
+	playstyle_string = "<span class='userdanger'>You are a Syndicate eyebot!</span><br>\
+						<b>You are armed with powerful weapons to aid you in your mission: help the operatives secure the nuclear authentication disk. \
+						Your pistol can piece throught armored vests and hardsuits! \
+						You are outfited with an ion thruster and can shoot through windows with your laser, and your operative pinpointer will find and locate fellow nuclear operatives. \
+						<i>Help the operatives secure the disk at all costs!</i></b>"
+
+
+/mob/living/silicon/robot/syndicate/eyesyndi/init()
+	..()
+	module = new /obj/item/weapon/robot_module/eyesyndi(src)
+
