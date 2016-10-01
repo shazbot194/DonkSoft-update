@@ -702,7 +702,7 @@
 				to_chat(user, "\red This [W] does not seem to fit.")
 				return
 
-			var//mob/living/silicon/robot/Large/O = new /mob/living/silicon/robot/Large(get_turf(loc), unfinished = 1)
+			var/mob/living/silicon/robot/Large/O = new /mob/living/silicon/robot/Large(get_turf(loc), unfinished = 1)
 			if(!O)	return
 
 			user.drop_item()

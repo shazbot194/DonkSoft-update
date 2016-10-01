@@ -469,7 +469,7 @@
 
 /obj/item/weapon/robot_module/guard/New()
 	..()
-	modules += new /obj/item/weapon/gun/energy/rubber(src)
+	modules += new /obj/item/weapon/gun/energy/printer/rubber45(src)
 	modules += new /obj/item/weapon/gun/energy/laser/cyborg/disablercannon(src)
 	modules += new /obj/item/weapon/restraints/handcuffs/cable/zipties/cyborg(src)
 	modules += new /obj/item/weapon/gun/energy/laser/cyborg/tear(src)
