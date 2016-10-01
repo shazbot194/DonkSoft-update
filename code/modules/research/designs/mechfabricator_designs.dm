@@ -1078,6 +1078,24 @@
 	construction_time = 600
 	category = list("Misc")
 
+/datum/design/Large_frame
+	name = "Large Frame"
+	id = "large_frame"
+	build_type = MECHFAB
+	build_path = /obj/item/robot_parts/large
+	materials = list(MAT_METAL=40000)
+	construction_time = 800
+	category = list("Misc")
+
+/datum/design/large_head
+	name = "Large head"
+	id = "lhead"
+	build_type = MECHFAB
+	build_path = /obj/item/robot_parts/lhead
+	materials = list(MAT_METAL=15000)
+	construction_time = 100
+	category = list("Misc")
+
 /datum/design/mecha_tracking
 	name = "Exosuit Tracking Beacon"
 	id = "mecha_tracking"

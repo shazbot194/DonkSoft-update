@@ -58,6 +58,7 @@
 	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "riotgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/foam)
+	cell_type = /obj/item/weapon/stock_parts/cell/pulse
 
 /obj/item/weapon/gun/energy/laser/cyborg/tear
 	name = "Tear Gas launcher"
@@ -65,6 +66,7 @@
 	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "riotgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/tear)
+	cell_type = /obj/item/weapon/stock_parts/cell/pulse
 
 /obj/item/weapon/gun/energy/laser/cyborg/disablercannon
 	name = "Disabler cannon"
