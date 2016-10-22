@@ -54,3 +54,9 @@
 	fire_sound = 'sound/weapons/gunshot_smg.ogg'
 	e_cost = 200
 
+/obj/item/ammo_casing/energy/ap
+	projectile_type = /obj/item/projectile/bullet/eyebotsydi
+	select_name = "spraydown"
+	fire_sound = 'sound/weapons/gunshot.ogg'
+	e_cost = 100
+

@@ -37,6 +37,10 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/tear
 	e_cost = 40000
 
+/obj/item/ammo_casing/energy/laser/smoke
+	projectile_type = /obj/item/projectile/bullet/reusable/smoke
+	e_cost = 10000
+
 /obj/item/ammo_casing/energy/laser/scatter
 	projectile_type = /obj/item/projectile/beam/scatter
 	pellets = 5

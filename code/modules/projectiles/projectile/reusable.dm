@@ -126,6 +126,7 @@
 		spawn(det_time)
 			F.prime()
 
+<<<<<<< HEAD
 
 /obj/item/projectile/bullet/reusable/rifle_foam
 	name = "rifle foam dart"
@@ -146,3 +147,26 @@
 	dropped = 1
 	var/obj/item/ammo_casing/caseless/rifle_foam/newdart = new ammo_type(loc)
 	newdart.update_icon()
+=======
+/obj/item/projectile/bullet/reusable/smoke
+	name = "smoke grenade"
+	desc = "GET DOWN."
+	damage = 0
+	damage_type = OXY
+	nodamage = 1
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "flashbang_active"
+	ammo_type = /obj/item/weapon/grenade/smokebomb
+	range = 10
+	edge = 0
+	embed = 0
+	var/det_time = 10
+
+
+/obj/item/projectile/bullet/reusable/smoke/handle_drop()
+	if(!dropped)
+		var/obj/item/weapon/grenade/smokebomb/F = new ammo_type(loc)
+		dropped = 1
+		spawn(det_time)
+			F.prime()
+>>>>>>> origin/master
