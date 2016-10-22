@@ -235,6 +235,7 @@
 			full_law_reset()
 			show_laws()
 
+
 /mob/living/silicon/robot/drone/proc/shut_down()
 	if(stat != 2)
 		if(emagged)
@@ -288,6 +289,20 @@
 	to_chat(src, "Remember, you are <b>lawed against interference with the crew</b>. Also remember, <b>you DO NOT take orders from the AI.</b>")
 	to_chat(src, "<b>Don't invade their worksites, don't steal their resources, don't tell them about the changeling in the toilets.</b>")
 	to_chat(src, "<b>Make sure crew members do not notice you.</b>.")
+
+	var/file2 = file2text("config/custom_drone.txt")
+	var/list/lines = splittext(file2, ";")
+	for(var/i = 1 to lines.len)
+	// split & clean up
+		var/line = lines[i]
+		var/list/Entry = splittext(line, "-")
+		for(var/j = 1 to Entry.len)
+			Entry[j] = trim(Entry[j])
+
+		if(Entry[1] == src.ckey)
+			custom_sprite = 1
+			icon = 'icons/mob/custom-drone.dmi'
+			icon_state = Entry[2]
 
 /*
 	sprite["Default"] = "repairbot"

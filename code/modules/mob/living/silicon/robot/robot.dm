@@ -378,21 +378,21 @@ var/list/robot_verbs_default = list(
 		if("Emergency")
 			module = new /obj/item/weapon/robot_module/emergency(src)
 			module.channels = list("Emergency" = 1)
-			modtype = "eyebot"
+			modtype = "emergency"
 			module_sprites["Medbay Green"] = "Eyebot-emergency"
 			module_sprites["Classic red"] = "Eyebot-emergency1"
 
 		if("Pest")
 			module = new /obj/item/weapon/robot_module/pest(src)
 			module.channels = list("Pest" = 1)
-			modtype = "eyebot"
+			modtype = "prest"
 			module_sprites["Badge"] = "Eyebot-sec1"
 			module_sprites["clean"] = "Eyebot-sec2"
 
 		if("Guard")
 			module = new /obj/item/weapon/robot_module/guard(src)
 			module.channels = list("Guard" = 1)
-			modtype = "large"
+			modtype = "guard"
 			module_sprites["Brig Red"] = "guardred"
 			module_sprites["Bridge Blue"] = "guardblue"
 			module_sprites["NT Blue"] = "guardnt"

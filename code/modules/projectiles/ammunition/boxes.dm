@@ -108,3 +108,10 @@
 	ammo_type = /obj/item/ammo_casing/cap
 	max_ammo = 7
 	multiple_sprites = 1
+
+/obj/item/ammo_box/riflefoambox
+	name = "ammo box (Rifle Foam Darts)"
+	icon = 'icons/obj/guns/toy.dmi'
+	icon_state = "riflefoambox_red"
+	ammo_type = /obj/item/ammo_casing/caseless/rifle_foam
+	max_ammo = 20

@@ -162,6 +162,11 @@
 	caliber = "foam_force"
 	max_ammo = 4
 
+/obj/item/ammo_box/magazine/internal/shot/riflefoam
+	caliber = "rifle_foam"
+	max_ammo = 5
+	ammo_type = /obj/item/ammo_casing/caseless/rifle_foam
+
 /obj/item/ammo_box/magazine/internal/shot/toy/crossbow
 	max_ammo = 5
 
@@ -269,7 +274,7 @@
 
 /obj/item/ammo_box/magazine/smgm9mm/update_icon()
 	..()
-	icon_state = "[initial(icon_state)]-[round(ammo_count(),6)]"
+	icon_state = "[initial(icon_state)]-[round(ammo_count()+1,4)]"
 
 /obj/item/ammo_box/magazine/pistolm9mm
 	name = "pistol magazine (9mm)"
@@ -373,15 +378,24 @@
 
 /obj/item/ammo_box/magazine/toy/smg
 	name = "foam force SMG magazine"
-	icon_state = "smg9mm-30"
+	icon_state = "smg9mm-20"
 	max_ammo = 20
 
 /obj/item/ammo_box/magazine/toy/smg/update_icon()
 	..()
-	icon_state = "smg9mm-[round(ammo_count(),5)]"
+	icon_state = "smg9mm-[round(ammo_count()+1,4)]"
 
 /obj/item/ammo_box/magazine/toy/smg/riot
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
+
+/obj/item/ammo_box/magazine/toy/smg/riot/blue
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/blue
+
+/obj/item/ammo_box/magazine/toy/smg/riot/orange
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/orange
+
+/obj/item/ammo_box/magazine/toy/smg/riot/green
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/green
 
 /obj/item/ammo_box/magazine/toy/pistol
 	name = "foam force pistol magazine"
@@ -392,10 +406,39 @@
 /obj/item/ammo_box/magazine/toy/pistol/riot
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 
+/obj/item/ammo_box/magazine/toy/rifle
+	name = "foam force rifle magazine"
+	icon = 'icons/obj/guns/toy.dmi'
+	icon_state = "riotrmag"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
+	max_ammo = 30
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/toy/rifle/blue
+	icon_state = "riotbmag"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/blue
+
+/obj/item/ammo_box/magazine/toy/rifle/green
+	icon_state = "riotgmag"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/green
+
+/obj/item/ammo_box/magazine/toy/rifle/orange
+	icon_state = "riotomag"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/orange
+
 /obj/item/ammo_box/magazine/toy/smgm45
 	name = "donksoft SMG magazine"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	max_ammo = 20
+
+/obj/item/ammo_box/magazine/toy/smgm45/ntblue
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/blue
+
+/obj/item/ammo_box/magazine/toy/smgm45/orange
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/orange
+
+/obj/item/ammo_box/magazine/toy/smgm45/green
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/green
 
 /obj/item/ammo_box/magazine/toy/smgm45/update_icon()
 	..()
@@ -409,3 +452,12 @@
 /obj/item/ammo_box/magazine/toy/m762/update_icon()
 	..()
 	icon_state = "a762-[round(ammo_count(),10)]"
+
+/obj/item/ammo_box/magazine/toy/m762/blue
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/blue
+
+/obj/item/ammo_box/magazine/toy/m762/orange
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/orange
+
+/obj/item/ammo_box/magazine/toy/m762/green
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/green

@@ -13,6 +13,7 @@
 	can_suppress = 0
 	burst_size = 3
 	fire_delay = 1
+	item_color = ""
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/attack_self(mob/user)
 	cover_open = !cover_open
@@ -20,8 +21,8 @@
 	update_icon()
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/update_icon()
-	icon_state = "l6[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/12.5)*25 : "-empty"][suppressed ? "-suppressed" : ""]"
-	item_state = "l6[cover_open ? "openmag" : "closedmag"]"
+	icon_state = "l6[item_color][cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/12.5)*25 : "-empty"][suppressed ? "-suppressed" : ""]"
+	item_state = "l6[item_color][cover_open ? "openmag" : "closedmag"]"
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params) //what I tried to do here is just add a check to see if the cover is open or not and add an icon_state change because I can't figure out how c-20rs do it with overlays
 	if(cover_open)

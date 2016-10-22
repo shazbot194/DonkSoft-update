@@ -351,6 +351,32 @@
 	projectile_type = /obj/item/projectile/bullet/reusable/foam_dart/riot
 	icon_state = "foamdart_riot"
 
+/obj/item/ammo_casing/caseless/foam_dart/riot/blue
+	projectile_type = /obj/item/projectile/bullet/reusable/foam_dart/riot/blue
+	icon_state = "foamdart_blue"
+
+/obj/item/ammo_casing/caseless/foam_dart/riot/orange
+	projectile_type = /obj/item/projectile/bullet/reusable/foam_dart/riot/orange
+	icon_state = "foamdart_orange"
+
+/obj/item/ammo_casing/caseless/foam_dart/riot/green
+	projectile_type = /obj/item/projectile/bullet/reusable/foam_dart/riot/green
+	icon_state = "foamdart_green"
+
+/obj/item/ammo_casing/caseless/rifle_foam
+	name = "rifle foam dart"
+	desc = "I guess whoever came up with riot foam darts came up with this."
+	projectile_type = /obj/item/projectile/bullet/reusable/rifle_foam
+	caliber = "rifle_foam"
+	icon = 'icons/obj/guns/toy.dmi'
+	icon_state = "riflefoam_red"
+
+/obj/item/ammo_casing/caseless/rifle_foam/update_icon()
+	..()
+	icon_state = initial(icon_state)
+	if(BB)
+		BB.icon_state = initial(BB.icon_state)
+
 /obj/item/ammo_casing/shotgun/dart/assassination
 	desc = "A specialist shotgun dart designed to inncapacitate and kill the target over time, so you can get very far away from your target"
 

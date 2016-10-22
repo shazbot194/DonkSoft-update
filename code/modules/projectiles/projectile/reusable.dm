@@ -65,6 +65,18 @@
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	stamina = 25
 
+/obj/item/projectile/bullet/reusable/foam_dart/riot/blue
+	icon_state = "foamdart_blue"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/blue
+
+/obj/item/projectile/bullet/reusable/foam_dart/riot/orange
+	icon_state = "foamdart_orange"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/orange
+
+/obj/item/projectile/bullet/reusable/foam_dart/riot/green
+	icon_state = "foamdart_green"
+	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot/green
+
 /obj/item/projectile/bullet/reusable/foam_dart/handle_drop()
 	if(dropped)
 		return
@@ -113,3 +125,24 @@
 		dropped = 1
 		spawn(det_time)
 			F.prime()
+
+
+/obj/item/projectile/bullet/reusable/rifle_foam
+	name = "rifle foam dart"
+	icon = 'icons/obj/guns/toy.dmi'
+	icon_state = "riflefoam_red"
+	ammo_type = /obj/item/ammo_casing/caseless/rifle_foam
+	range = 15
+	damage = 0
+	stamina = 50
+	damage_type = OXY
+	nodamage = 1
+	edge = 0
+	embed = 0
+
+/obj/item/projectile/bullet/reusable/foam_dart/handle_drop()
+	if(dropped)
+		return
+	dropped = 1
+	var/obj/item/ammo_casing/caseless/rifle_foam/newdart = new ammo_type(loc)
+	newdart.update_icon()

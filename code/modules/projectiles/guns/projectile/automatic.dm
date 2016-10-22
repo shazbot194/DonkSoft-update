@@ -88,6 +88,7 @@
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
 	fire_delay = 2
 	burst_size = 2
+	item_color = ""
 
 /obj/item/weapon/gun/projectile/automatic/c20r/New()
 	..()
@@ -99,7 +100,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
 	..()
-	icon_state = "c20r[magazine ? "-[Ceiling(get_ammo(0)/4)*4]" : ""][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
+	icon_state = "c20r[item_color][magazine ? "-[Ceiling(get_ammo(0)/4)*4]" : ""][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
 
 /obj/item/weapon/gun/projectile/automatic/wt550
 	name = "security auto rifle"
